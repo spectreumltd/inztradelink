@@ -1,158 +1,92 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <style>
-    .supplier-page {
-        background: #ffffff;
-    }
+<div class="container py-4">
+    <h2 class="mb-4">Supplier Sign Up</h2>
 
-    .supplier-hero {
-        background: linear-gradient(90deg, #c90707 0%, #f31616 100%);
-        color: #fff;
-        padding: 40px 0;
-        margin-bottom: 40px;
-    }
+    <form method="POST" action="{{ route('supplier-sign-up.store') }}" enctype="multipart/form-data">
+        @csrf
 
-    .supplier-hero h1 {
-        margin: 0;
-        font-size: 38px;
-        font-weight: 700;
-        letter-spacing: .3px;
-    }
-
-    .supplier-card {
-        border: 0;
-        border-radius: 12px;
-        box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
-        margin-bottom: 40px;
-    }
-
-    .supplier-card .card-body {
-        padding: 36px 34px;
-    }
-
-    .supplier-title {
-        font-size: 34px;
-        text-align: center;
-        font-weight: 700;
-        margin-bottom: 28px;
-    }
-
-    .supplier-form label {
-        font-weight: 600;
-        margin-bottom: 6px;
-        color: #202020;
-    }
-
-    .supplier-form .required {
-        color: #d31a1a;
-    }
-
-    .supplier-form .form-control {
-        border-radius: 7px;
-        border: 1px solid #c9ced6;
-        min-height: 46px;
-    }
-
-    .supplier-form .form-control:focus {
-        border-color: #f31616;
-        box-shadow: 0 0 0 .2rem rgba(243, 22, 22, .15);
-    }
-
-    .upload-box {
-        border: 1px dashed #d4d8de;
-        border-radius: 10px;
-        padding: 24px 20px;
-        text-align: center;
-        background: #fafbfd;
-    }
-
-    .upload-hint {
-        margin-top: 10px;
-        font-size: 13px;
-        color: #70757f;
-    }
-
-    .btn-supplier {
-        background: #f31616;
-        border-color: #f31616;
-        color: #fff;
-        min-width: 180px;
-        min-height: 46px;
-        border-radius: 8px;
-        font-weight: 600;
-    }
-
-    .btn-supplier:hover {
-        background: #d70f0f;
-        border-color: #d70f0f;
-        color: #fff;
-    }
-</style>
-
-<div class="supplier-page">
-    <section class="supplier-hero">
-        <div class="container">
-            <h1>Supplier Sign Up</h1>
+        <div class="mb-3">
+            <label for="first_name" class="form-label">First Name *</label>
+            <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}" class="form-control @error('first_name') is-invalid @enderror" required>
+            @error('first_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
-    </section>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="card supplier-card">
-                    <div class="card-body">
-                        <h2 class="supplier-title">Supplier Sign Up</h2>
-
-                        <form class="supplier-form" action="{{ route('supplier-sign-up') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="first_name">First Name <span class="required">*</span></label>
-                                    <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Enter first name" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="last_name">Last Name <span class="required">*</span></label>
-                                    <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Enter last name" required>
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="email">Email <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="password">Password <span class="required">*</span></label>
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="password_confirmation">Confirm Password <span class="required">*</span></label>
-                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm password" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="mobile">Mobile <span class="required">*</span></label>
-                                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Enter mobile number" required>
-                                </div>
-
-                                <div class="col-12 mb-4">
-                                    <label for="image">Image</label>
-                                    <div class="upload-box">
-                                        <input type="file" id="image" name="image" class="form-control">
-                                        <p class="upload-hint mb-0">PNG/JPG recommended, max 5MB for best performance.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-supplier">Create Account</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name *</label>
+            <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}" class="form-control @error('last_name') is-invalid @enderror" required>
+            @error('last_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
-    </div>
-</div> -->
-Supplier Sign Up Page
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" required>
+            @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password *</label>
+            <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
+            @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="password_confirmation" class="form-label">Confirm Password *</label>
+            <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input id="mobile" type="text" name="mobile" value="{{ old('mobile') }}" class="form-control @error('mobile') is-invalid @enderror">
+            @error('mobile') <div class="invalid-feedback">{{ $message }}</div> @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input id="image" type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+            @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Supplier Account</button>
+    </form>
+</div>
+
+@endsection
+
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+<script>
+    if ($("#supplier_form").length > 0)
+    {
+        $("#supplier_form").validate({
+          rules: {
+              first_name: {
+                  required: true
+              },
+              last_name: {
+                  required: true
+              },
+              email: {
+                  required: true
+              },
+              password: {
+                  required: true
+              },
+              password_confirmation: {
+                  required: true
+              },
+          },
+          messages: {
+            first_name: 'Please Enter First Name.',
+            last_name: 'Please Enter Last Name.',
+            email: 'Please Enter Email.',
+            password: 'Please Enter Password.',
+            password_confirmation: 'Please Enter Confirm Password.',
+            },
+        });
+    }
+</script>
 @endsection

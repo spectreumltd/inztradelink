@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('role_id')->default(2);
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -21,6 +22,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->tinyInteger('is_active')->default(1);
+            $table->string('forgot_otp_number')->nullable();
+            $table->timestamp('forgot_otp_expires_at')->nullable();
+            $table->timestamp('forgot_verified_at')->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

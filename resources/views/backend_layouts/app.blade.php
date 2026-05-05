@@ -15,16 +15,16 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
-
     <!-- Scripts -->
 </head>
 <body>
-    <h1>Header</h1>
-    @include('layouts.alert')
+    <h1>Backend Header</h1>
+    {{ Auth::user()->name }}
+    <a href="{{ route('logout') }}">Logout</a>
+    @include('backend_layouts.alert')
         @yield('content')
-    <h1>Footer</h1>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <h1>Backend Footer</h1>
+    
     @yield('scripts')
 </body>
 </html>

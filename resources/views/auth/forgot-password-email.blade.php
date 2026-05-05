@@ -5,24 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('Forgot Password Email Verification') }}</div>
 
                 <div class="card-body">
                     @include('backend_layouts.alert')
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('forgot-password-email-verification') }}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -35,8 +29,11 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('Send Password OTP') }}
                                 </button>
+                                <a class="btn btn-link" href="{{ route('login') }}">
+                                    {{ __('Back to Login') }}
+                                </a>
                             </div>
                         </div>
                     </form>
